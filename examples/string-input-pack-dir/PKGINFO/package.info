@@ -1,0 +1,6 @@
+PKG_NAME="string-input-pack"
+MAINTAINER_NAME="Aleksandr Kosenkov"
+MAINTAINER_EMAIL="Marveel@yandex.ru"
+ENDPOINT_DIR="opt"
+PKG_SECTION="custom"
+INCLUDES=("./")

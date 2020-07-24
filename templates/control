@@ -1,0 +1,11 @@
+Package: {{ PKG_NAME }}
+Version: {{ PKG_VERSION }}
+Section: {{ PKG_SECTION }}
+Priority: optional
+Architecture: {{ PKG_ARCH }}
+Depends: {{ PKG_DEPENDS }}
+Pre-Depends: debconf (>= 1.0)
+Maintainer: {{ MAINTAINER_NAME }} <{{ MAINTAINER_EMAIL }}>
+Description: Test deb-package for practice.
+ More description of the package
+

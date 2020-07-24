@@ -1,0 +1,13 @@
+#!/bin/bash
+
+function postinst() {
+  echo -e "Creating symlinks..."
+  ln -sf {{ ENDPOINT_DIR }}/{{ PKG_NAME }}/src/pkg-creator.sh /usr/local/bin/pkg-creator
+  ln -sf {{ ENDPOINT_DIR }}/{{ PKG_NAME }}/pkg-creator.cfg /etc/default/pkg-creator
+}
+
+function postrm() {
+  echo -e "Removing symlinks..."
+  rm -rf /usr/local/bin/pkg-creator
+  rm -rf /etc/default/pkg-creator
+}

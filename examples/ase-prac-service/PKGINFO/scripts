@@ -1,0 +1,27 @@
+#!/bin/bash
+
+function postinst() {
+  local sysd_conf="/etc/systemd/system/ase-prac-service.service"
+  touch $sysd_conf
+  echo -e "[Unit]" >> $sysd_conf
+  echo -e "Description=ASP.NET test service for ASE practice" >> $sysd_conf
+  echo -e "" >> $sysd_conf
+  echo -e "[Service]" >> $sysd_conf
+  echo -e "WorkingDirectory={{ ENDPOINT_DIR }}/{{ PKG_NAME }}" >> $sysd_conf
+  echo -e "Type=notify" >> $sysd_conf
+  echo -e "ExecStart=/usr/bin/dotnet {{ ENDPOINT_DIR }}/{{ PKG_NAME }}/ASEPracticeService.dll" >> $sysd_conf
+  echo -e "" >> $sysd_conf
+  echo -e "[Install]" >> $sysd_conf
+  echo -e "WantedBy=multi-user.target" >> $sysd_conf
+
+  systemctl daemon-reload
+}
+
+function postrm() {
+  local sysd_conf="/etc/systemd/system/ase-prac-service.service"
+  local sysd_conf_alternative="/etc/systemd/system/multi-user.target/ase-prac-service.service"
+  rm -rf $sysd_conf
+  rm -rf $sysd_conf_alternative
+
+  systemctl daemon-reload
+}

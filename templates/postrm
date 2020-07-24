@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e # fail on any non-null exit code from command
+
+# including debconf commands
+. /usr/share/debconf/confmodule
+
+{{ API_SCRIPTS }}
+
+{{ CUSTOM_SCRIPT }}
+
+# Deleting package templates after remove package
+if [[ "$1" = "purge" && -e /usr/share/debconf/confmodule ]]; then
+    # Source debconf library.
+    . /usr/share/debconf/confmodule
+    # Remove my changes to the db.
+    db_purge
+fi
+
+{{ CUSTOM_SCRIPT_CALL }}
+
+exit 0

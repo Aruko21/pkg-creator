@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -e
+
+# including debconf commands
+. /usr/share/debconf/confmodule
+
+{{ LICENSE_SCRIPTS }}
+
+{{ API_SCRIPTS }}
+
+{{ CUSTOM_SCRIPT }}
+
+case "$1" in
+configure)
+
+  {{ LICENSE_AGREEMENT }}
+
+  {{ CUSTOM_SCRIPT_CALL }}
+
+  ;;
+
+reconfigure)
+
+  {{ CUSTOM_SCRIPT_CALL }}
+
+  ;;
+*)
+  echo "config called with unknown argument \`$1'" >&2
+  exit 1
+  ;;
+esac

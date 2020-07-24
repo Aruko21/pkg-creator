@@ -1,0 +1,6 @@
+PKG_NAME="ase-prac-service"
+MAINTAINER_NAME="Aleksandr Kosenkov"
+MAINTAINER_EMAIL="Marveel@yandex.ru"
+ENDPOINT_DIR="usr/local/src"
+PKG_SECTION="custom"
+INCLUDES=("./")

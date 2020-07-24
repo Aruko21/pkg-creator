@@ -1,0 +1,7 @@
+PKG_NAME="pkg-creator"
+MAINTAINER_NAME="Aleksandr Kosenkov"
+MAINTAINER_EMAIL="Marveel@yandex.ru"
+ENDPOINT_DIR="/usr/local/src"
+PKG_SECTION="custom"
+PKG_DEPENDS="bash (>= 3.0), python3 (>= 3.0), sed (>= 3.0)"
+INCLUDES=("src/" "templates/" "pkg-creator.cfg")

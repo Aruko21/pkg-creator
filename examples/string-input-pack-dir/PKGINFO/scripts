@@ -1,0 +1,45 @@
+#!/bin/bash
+
+function postinst() {
+  get_answer "{{ PKG_NAME }}/access"
+  local access=$RET
+
+  local user_string=""
+
+  if [[ $access == "secret" ]]; then
+    get_answer "{{ PKG_NAME }}/user_string"
+    user_string=$RET
+  else
+    user_string="STANDARD STRING"
+  fi
+
+  if [[ -z $DEBCONF_RECONFIGURE ]]; then
+    echo "${user_string}" >> '{{ ENDPOINT_DIR }}/{{ PKG_NAME }}/mystring.txt'
+  else
+    echo "${user_string} (reconfigure)" >> '{{ ENDPOINT_DIR }}/{{ PKG_NAME }}/mystring.txt'
+  fi
+}
+
+function postrm() {
+  echo -e "Output from postrm script"
+}
+
+function config() {
+  ask_question "{{ PKG_NAME }}/greeting"
+  get_answer "{{ PKG_NAME }}/greeting"
+  local username=$RET
+
+  set_window_title "Nice to meet you, ${username}!"
+
+  ask_question "{{ PKG_NAME }}/access"
+  get_answer "{{ PKG_NAME }}/access"
+  answer=$RET
+
+  if [[ $answer == "secret" ]]; then
+    set_window_title "Advanced installation"
+    ask_question "{{ PKG_NAME }}/user_string"
+  else
+    set_window_title "Standard installation"
+    ask_question "{{ PKG_NAME }}/deny"
+  fi
+}

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e # fail on any non-null exit code from command
+
+# This is a hack for reusing config script
+. /usr/share/debconf/confmodule
+
+{{ API_SCRIPTS }}
+
+{{ CUSTOM_SCRIPT }}
+
+{{ CUSTOM_SCRIPT_CALL }}
+
+exit 0
