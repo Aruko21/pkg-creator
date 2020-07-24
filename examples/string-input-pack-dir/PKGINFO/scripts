@@ -1,13 +1,13 @@
 #!/bin/bash
 
 function postinst() {
-  get_answer "{{ PKG_NAME }}/access"
+  get_answer "access"
   local access=$RET
 
   local user_string=""
 
   if [[ $access == "secret" ]]; then
-    get_answer "{{ PKG_NAME }}/user_string"
+    get_answer "user_string"
     user_string=$RET
   else
     user_string="STANDARD STRING"
@@ -20,26 +20,21 @@ function postinst() {
   fi
 }
 
-function postrm() {
-  echo -e "Output from postrm script"
-}
-
 function config() {
-  ask_question "{{ PKG_NAME }}/greeting"
-  get_answer "{{ PKG_NAME }}/greeting"
+  ask_question "greeting"
   local username=$RET
 
   set_window_title "Nice to meet you, ${username}!"
 
-  ask_question "{{ PKG_NAME }}/access"
-  get_answer "{{ PKG_NAME }}/access"
-  answer=$RET
+  ask_question "access"
+  local answer=$RET
+  set_window_title "Some testing: ${answer}"
 
   if [[ $answer == "secret" ]]; then
-    set_window_title "Advanced installation"
-    ask_question "{{ PKG_NAME }}/user_string"
+#    set_window_title "Advanced installation"
+    ask_question "user_string"
   else
-    set_window_title "Standard installation"
-    ask_question "{{ PKG_NAME }}/deny"
+#    set_window_title "Standard installation"
+    ask_question "deny"
   fi
 }

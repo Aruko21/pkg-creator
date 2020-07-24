@@ -1,4 +1,5 @@
 PKG_NAME="pkg-creator"
+PKG_VERSION="1.0-2"
 MAINTAINER_NAME="Aleksandr Kosenkov"
 MAINTAINER_EMAIL="Marveel@yandex.ru"
 ENDPOINT_DIR="/usr/local/src"

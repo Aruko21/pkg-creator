@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e # fail on any non-null exit code from command
+#set -e # fail on any non-null exit code from command
 
 # This is a hack for reusing config script
 . /usr/share/debconf/confmodule

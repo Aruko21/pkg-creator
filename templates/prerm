@@ -1,7 +1,7 @@
 #!/bin/bash
 
-set -e # fail on any non-null exit code from command
-set -E # let shell functions inherit ERR trap
+#set -e # fail on any non-null exit code from command
+#set -E # let shell functions inherit ERR trap
 
 # including debconf commands
 . /usr/share/debconf/confmodule

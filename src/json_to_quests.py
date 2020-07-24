@@ -33,7 +33,8 @@ def main():
     quest_number = 1
     try:
         for question in quests_list:
-            output_file.write("Template: {}\n".format(question["template"]))
+            # double {{ for printing {
+            output_file.write("Template: {{{{ PKG_NAME }}}}/{}\n".format(question["template"]))
             output_file.write("Type: {}\n".format(question["type"]))
             output_file.write("Description: {}\n".format(question["question"]))
             output_file.write(" {}\n".format(question["description"]))

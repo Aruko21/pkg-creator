@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+#set -e
 
 # including debconf commands
 . /usr/share/debconf/confmodule

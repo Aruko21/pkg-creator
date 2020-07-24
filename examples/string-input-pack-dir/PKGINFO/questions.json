@@ -1,26 +1,26 @@
 {
   "questions": [
     {
-      "template": "{{ PKG_NAME }}/greeting",
+      "template": "greeting",
       "type": "string",
       "question": "Please, enter your name:",
       "description": "Welcome to the installation of {{ PKG_NAME }}!"
     },
     {
-      "template": "{{ PKG_NAME }}/access",
+      "template": "access",
       "type": "password",
       "question": "Enter secret password for validation:",
       "description": "Access to advanced functionality"
     },
     {
-      "template": "{{ PKG_NAME }}/user_string",
+      "template": "user_string",
       "type": "string",
       "question": "Your string to save:",
       "description": "Enter the string to be saved in the file",
       "default": "Hello world"
     },
     {
-      "template": "{{ PKG_NAME }}/deny",
+      "template": "deny",
       "type": "text",
       "question": "Wrong password.",
       "description": "Installation will proceed in standard mode"

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-set -e # fail on any non-null exit code from command
+#set -e # fail on any non-null exit code from command
 #set -u # treat unset variables as errors
 # commented because unset variable DEBIAN_HAS_FRONTEND from debconf package
-set -E # let shell functions inherit ERR trap
+#set -E # let shell functions inherit ERR trap
 
 # including debconf commands
 . /usr/share/debconf/confmodule

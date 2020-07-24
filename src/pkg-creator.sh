@@ -26,11 +26,10 @@ fi
 #trap err_handler SIGHUP SIGINT SIGQUIT SIGTERM ERR
 
 if [[ $# -eq 0 ]]; then
-  util_error "Missed package dir argument. Usage: pkg-creator <path/to/package>"
-  exit 1
+  DIR_NAME="./"
+else
+  DIR_NAME=$1
 fi
-
-DIR_NAME=$1
 
 if [[ ! -d $DIR_NAME ]]; then
   util_error "Directory '${DIR_NAME}' doesn't exist"
@@ -91,7 +90,7 @@ if [[ ! -z $INCLUDES ]]; then
       rsync -a "${DIR_NAME}/${content}" "${BIN_DIR}/${content}"
     done
   else
-    rsync -a "${DIR_NAME}/" "${BIN_DIR}/" --exclude "${PACKAGE_INFO_DIR}"
+    rsync -a "${DIR_NAME}/" "${BIN_DIR}/" --exclude "${PACKAGE_INFO_DIR}" --exclude "${PKG_NAME}"
   fi
 fi
 

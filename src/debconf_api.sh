@@ -8,9 +8,12 @@ function ask_question() {
 
   local question=$1
 
-  export INPUT_STATUS=$(db_input critical "${question}" ; echo $?) # Initialisation
+
+  export INPUT_STATUS=$(db_input critical "{{ PKG_NAME }}/${question}" ; echo $?) # Initialisation
 
   db_go || true # query printing
+
+  db_get "{{ PKG_NAME }}/${question}"
 }
 
 function get_answer() {
@@ -21,7 +24,7 @@ function get_answer() {
 
   local question=$1
 
-  db_get $1
+  db_get "{{ PKG_NAME }}/${question}"
 }
 
 function set_window_title() {
